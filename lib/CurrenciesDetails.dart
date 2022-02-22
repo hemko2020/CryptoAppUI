@@ -8,7 +8,6 @@ class CurrenciesDetailsPage extends StatefulWidget {
 
 class _CurrenciesDetailsPageState extends State<CurrenciesDetailsPage> {
   @override
-  // ignore: missing_return
   Widget build(BuildContext context) {}
 }
 

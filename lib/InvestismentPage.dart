@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'CurrenciesDetails.dart';
 import 'Currencies.dart';
 
@@ -17,7 +18,7 @@ class _InvestismentPageState extends State<InvestismentPage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 350,
+            expandedHeight: 300,
             backgroundColor: Colors.black,
             title: Text(
               "Investments",
@@ -30,79 +31,73 @@ class _InvestismentPageState extends State<InvestismentPage> {
             floating: true,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                "https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2Fd968bcf4-a22f-11e8-85da-eeb7a9ce36e4?fit=scale-down&source=next&width=700",
+              background: Image.asset(
+                "asset/images/akt.png",
                 fit: BoxFit.cover,
               ),
               centerTitle: true,
             ),
           ),
           SliverAppBar(
-            toolbarHeight: 1,
-            backgroundColor: Colors.black,
-            centerTitle: true,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                "BTC Token",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 45,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.normal,
-                ),
-              ),
-              titlePadding: EdgeInsetsDirectional.only(start: 10, end: 10),
-              centerTitle: true,
-            ),
-          ),
-          SliverAppBar(
-            toolbarHeight: -2,
+            toolbarHeight: 25,
             backgroundColor: Colors.black,
             floating: true,
             pinned: false,
             centerTitle: true,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: EdgeInsetsDirectional.only(start: 5, end: 5),
-              centerTitle: true,
-              title: Text(
-                "Purchase our exclusive token with 25% bonus & get your lifetime Elite membership now",
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 18.5,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            automaticallyImplyLeading: true,
-          ),
-          SliverAppBar(
-            backwardsCompatibility: true,
-            backgroundColor: Colors.black,
-            floating: true,
-            pinned: false,
-            toolbarHeight: 50,
-            flexibleSpace: FlexibleSpaceBar(
+              titlePadding: EdgeInsetsDirectional.only(bottom: 10),
               centerTitle: true,
               title: Container(
-                width: 140,
-                height: 48,
-                padding: EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsets.only(top: 8, left: 45, right: 45),
-                child: OutlinedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Learn more  →",
-                    style: TextStyle(color: Colors.white),
+                padding: EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RichText(
+                      textHeightBehavior: DefaultTextHeightBehavior.of(context),
+                      textAlign: TextAlign.center,
+                      textWidthBasis: TextWidthBasis.parent,
+                      softWrap: true,
+                      text: TextSpan(children: [
+                        TextSpan(
+                            text: "AKT Token \n",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 26,
+                                leadingDistribution:
+                                    TextLeadingDistribution.even)),
+                      ]),
+                    ),
+                  ],
+                ),
+              ),
+              background: Container(
+                padding: EdgeInsets.only(top: 38),
+                margin: EdgeInsets.only(left: 68),
+                child: RichText(
+                  text: TextSpan(
+                    text:
+                        "Purchase our exclusive token with 25% bonus \n   & get your lifetime Elite membership now",
                   ),
                 ),
               ),
             ),
           ),
+          SliverAppBar(
+            toolbarHeight: 30,
+            backgroundColor: Colors.black,
+            flexibleSpace: FlexibleSpaceBar(
+              title: ElevatedButton(
+                style: ButtonStyle(),
+                child: RichText(
+                    text: TextSpan(
+                  text: "Learn more   →",
+                )),
+                onPressed: () {},
+              ),
+            ),
+          ),
           SliverFixedExtentList(
-            itemExtent: 1000,
+            itemExtent: 950,
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                   padding: EdgeInsets.all(1),
@@ -186,7 +181,7 @@ class _InvestismentPageState extends State<InvestismentPage> {
       child: Row(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            margin: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
             child: FittedBox(
               fit: BoxFit.fill,
               alignment: Alignment.topCenter,
@@ -200,45 +195,42 @@ class _InvestismentPageState extends State<InvestismentPage> {
                           height: 100,
                           margin: EdgeInsets.only(right: 20),
                           decoration: BoxDecoration(
-                              color: Colors.orange.shade400,
+                              color: Colors.yellow,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                         ),
                         SizedBox(
                           height: 8,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              "BTC",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(right: 45),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "BTC \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "9 351,30€ \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "▲ 2,17%",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "9 351,30€",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              "▲ 2,17%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -249,49 +241,47 @@ class _InvestismentPageState extends State<InvestismentPage> {
                           height: 100,
                           margin: EdgeInsets.only(right: 20),
                           decoration: BoxDecoration(
-                              color: Colors.greenAccent.shade400,
+                              color: Colors.limeAccent.shade400,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10))),
                         ),
                         SizedBox(
                           height: 8,
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              "XPR",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(right: 60),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "XPR \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "0,75€ \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "▼ 2,17%",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "0,75€",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "▼ 2.17%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
                           width: 100,
@@ -305,38 +295,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                         SizedBox(
                           height: 8,
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              "ETH",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(right: 60),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "ETH \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "351,30€ \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "▲ 0,17%",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "351,30€",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "▲ 0.17%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -354,38 +341,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                         SizedBox(
                           height: 8,
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              "BNB",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(right: 65),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "BNB \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "51,35€ \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "▲ 1,17%",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "51,30€",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "▲ 1.17%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.green,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -403,38 +387,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                         SizedBox(
                           height: 8,
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              "LTC",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
+                        Container(
+                          margin: EdgeInsets.only(right: 55),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "LTC \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "15,30€ \n",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "▼ 12,17%",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "15,30€",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "▼ 12.17%",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
@@ -466,44 +447,41 @@ class _InvestismentPageState extends State<InvestismentPage> {
                     height: 100,
                     margin: EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
-                        color: Colors.blueAccent.shade200,
+                        color: Colors.blue.shade100,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "DENT",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 45),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "DENT \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "9 351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "9 351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -514,44 +492,41 @@ class _InvestismentPageState extends State<InvestismentPage> {
                     height: 100,
                     margin: EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
-                        color: Colors.red.shade600,
+                        color: Colors.red,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "UNI",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 55),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "UNI \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "0,75€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "0,75€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -562,44 +537,41 @@ class _InvestismentPageState extends State<InvestismentPage> {
                     height: 100,
                     margin: EdgeInsets.only(right: 20),
                     decoration: BoxDecoration(
-                        color: Colors.purple.shade100,
+                        color: Colors.deepPurple.shade400,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "AAVE",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 55),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "AAVE \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 0,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 0.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -616,38 +588,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "DAI",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 55),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "DAI \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "51,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 1,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "51,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 1.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -664,38 +633,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "CRO",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 55),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "CRO \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "15,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 12,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "15,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 12.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -733,38 +699,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "BTC",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 45),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "BTC \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "9 351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "9 351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -781,38 +744,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "XPR",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "XPR \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "0,75€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "0,75€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -829,38 +789,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "ETH",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "ETH \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 0,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 0.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -877,38 +834,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "BNB",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 65),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "BNB \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "51,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 1,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "51,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 1.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -925,38 +879,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "LTC",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "LTC \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "15,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 1,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "15,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 1.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -994,38 +945,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "DENT",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 45),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "DENT \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "9 351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "9 351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -1042,38 +990,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "UNI",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "UNI \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "0,75€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 2,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "0,75€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 2.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -1090,38 +1035,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "AAVE",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 60),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "AAVE \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "351,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 0,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "351,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 0.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -1138,38 +1080,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "DAI",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 65),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "DAI \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "51,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▲ 1,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "51,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▲ 1.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -1186,38 +1125,35 @@ class _InvestismentPageState extends State<InvestismentPage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        "CRO",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
+                  Container(
+                    margin: EdgeInsets.only(right: 55),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "CRO \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "15,30€ \n",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "▼ 12,17%",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.red,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "15,30€",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        "▼ 12.17%",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),
